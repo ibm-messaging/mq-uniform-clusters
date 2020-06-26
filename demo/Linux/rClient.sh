@@ -20,7 +20,7 @@ if [ -f "$MQCHLLIB/$MQCHLTAB" ]; then
 
   # Start multiple instances of the sample application
   for (( i=0; i<$1; ++i)); do
-    amqsghac Q1 *ANY_QM &
+    $MQ_INSTALLATION_PATH/samp/bin/amqsghac Q1 *ANY_QM &
   done
 
 else
