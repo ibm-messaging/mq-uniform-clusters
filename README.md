@@ -6,7 +6,7 @@ Uniform clusters are a specific pattern of an IBM MQ cluster that provides a hig
 
 ## Demo
 
-This [video on YouTube](https://www.youtube.com/watch?v=LWELgaEDGs0) takes you through a very simple demo of a Uniform Cluster containing three queue managers. Many of the scripts and configuration to run this demo can be found in 'demo/Linux' with help on running it [here](demo/Linux/usage.md).
+This [video on YouTube](https://www.youtube.com/watch?v=LWELgaEDGs0) takes you through a very simple demo of a Uniform Cluster containing three queue managers. Many of the scripts and configuration to run this demo can be found in 'demo/Linux' with help on running it [here](demo/Linux/README.md).
 
 More information on Uniform Clusters can be found [here](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.1.0/com.ibm.mq.pla.doc/q132720_.htm).
 
