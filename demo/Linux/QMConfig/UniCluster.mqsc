@@ -1,0 +1,16 @@
+* This MQSC configuration is used for all queue managers in the demo uniform cluster
+* Nothing in this configuration is specific to a particular queue manager
+
+* Simplify the demo system by disabling channel and connection authentication
+ALTER QMGR CHLAUTH(DISABLED) CONNAUTH(' ')
+REFRESH SECURITY TYPE(CONNAUTH)
+
+* The only definition required to join a Uniform CLuster when using AutoCluster is to define a cluster receiver channel
+* This will use the cluster name from the AutoCluster ini file setting and the connection name from the crtmqm command
+DEFINE CHANNEL(UNICLUSTER.+QMNAME+) CHLTYPE(CLUSRCVR) CLUSTER(+AUTOCL+) CONNAME(+CONNAME+) SHORTRTY(120) SHORTTMR(5)
+
+* Every queue manager needs to accept client connections
+DEFINE CHANNEL(SVRCONN.CHANNEL) CHLTYPE(SVRCONN)
+
+* Messaging resources like queues need to be defined on every member of the uniform cluster
+DEFINE QLOCAL(Q1) CLUSTER(UNICLUSTER) DEFPSIST(YES) DEFBIND(NOTFIXED)
