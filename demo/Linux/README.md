@@ -54,5 +54,7 @@ Stopping and starting a queue manager will show connections being moved to alter
 As each of the queue managers are configured from the same set of configuration it is very easy to add more queue managers. To do that you need to perform three steps:
 
 1. Create the queue manager using a similar `crtmqm` command found in `createCluster.sh`, only needing to change the queue manager name and the two points where the port is set in that command.
-2. Add new entries to the CCDT (a sample four queue manager CCDT is provided in QMConfig), this will automatically be picked up by the existing applications.
+2. Add new entries to the CCDT, this will automatically be picked up by the existing applications.
 3. Start the new queue manager.
+
+The `addQMGR4.sh` script automates the above three steps
