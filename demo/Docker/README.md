@@ -4,9 +4,9 @@
 
 The demo scripts and configuration have been produced for Docker using the IBM MQ Advanced for Developers image from https://hub.docker.com/r/ibmcom/mq/.
 
-The bash scripts are written to work on MacOS and should also work on Linux
+The bash scripts are written to work on MacOS and Linux
 
-As well as the Docker containers the system you run this demo on will need both Docker installed and an IBM MQ base client and samples. For example, those found at https://developer.ibm.com/articles/mq-downloads/#c-lang. From this you'll need both the location of the runmqsc and the pre-built samples in your path.
+As well as the Docker containers the system you run this demo on will need both Docker installed and at least an IBM MQ base client and samples. For example, those found at https://developer.ibm.com/articles/mq-downloads/#c-lang for your base OS. From this you'll need both the location of the runmqsc and the pre-built samples in your path (bin and samp/bin).
 
 ## The setup
 

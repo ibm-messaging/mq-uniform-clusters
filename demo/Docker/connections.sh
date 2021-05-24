@@ -47,33 +47,39 @@ delay=${2:-1}
 # Admin password (default passw0rd)
 password=${3:-passw0rd}
 
-for (( i=0; i<100000; ++i)); do
-  # Grab a list of connections for each application and stash them in /tmp
-  `(echo "$password"; echo "dis conn(*) where(appltag eq 'amqsphac')") | runmqsc -c -u admin $qmName 2> /dev/null 1> /tmp/showConn.$qmName.amqsphac`
-  `(echo "$password"; echo "dis conn(*) where(appltag eq 'amqsghac')") | runmqsc -c -u admin $qmName 2> /dev/null 1> /tmp/showConn.$qmName.amqsghac`
+# You need runmqsc available on the host system so that it can connect to the
+# queue manager running in the container
+if [ ! -x "$(command -v runmqsc)" ]; then
+  echo 'ERROR: runmqsc not found on local system'
+else
+  for (( i=0; i<100000; ++i)); do
+    # Grab a list of connections for each application and stash them in /tmp
+    `(echo "$password"; echo "dis conn(*) where(appltag eq 'amqsphac')") | runmqsc -c -u admin $qmName 2> /dev/null 1> /tmp/showConn.$qmName.amqsphac`
+    `(echo "$password"; echo "dis conn(*) where(appltag eq 'amqsghac')") | runmqsc -c -u admin $qmName 2> /dev/null 1> /tmp/showConn.$qmName.amqsghac`
 
-  # See if runmqsc connected, i.e. the queue manager is running  
-  running=`grep -e "AMQ9202E" /tmp/showConn.$qmName.amqsphac | wc -l`
+    # See if runmqsc connected, i.e. the queue manager is running  
+    running=`grep -e "AMQ9202E" /tmp/showConn.$qmName.amqsphac | wc -l`
 
-  # Count up each application
-  connCountP=`grep -e "  CONN" /tmp/showConn.$qmName.amqsphac | wc -w`
-  connCountG=`grep -e "  CONN" /tmp/showConn.$qmName.amqsghac | wc -w`
+    # Count up each application
+    connCountP=`grep -e "  CONN" /tmp/showConn.$qmName.amqsphac | wc -w`
+    connCountG=`grep -e "  CONN" /tmp/showConn.$qmName.amqsghac | wc -w`
 
-  # Just refresh what's in the terminal on each poll
-  clear
-  if [ $running -eq 1 ]
-  then
-    echo -e "${red}$1 not available${nc}"
-  else
-    # Display each connection
-    echo -e "${green}$1${nc}"
-    echo -e "${putters}putters:$connCountP${getters}  getters:$connCountG${nc}"
-    echo -e "${putters}"
-    grep -e "  CONN" /tmp/showConn.$qmName.amqsphac
-    echo -e "${getters}"
-    grep -e "  CONN" /tmp/showConn.$qmName.amqsghac
-    echo -e "${nc}"
-  fi
-  # Wait for the next poll
-  sleep $delay
-done
+    # Just refresh what's in the terminal on each poll
+    clear
+    if [ $running -eq 1 ]
+    then
+      echo -e "${red}$1 not available${nc}"
+    else
+      # Display each connection
+      echo -e "${green}$1${nc}"
+      echo -e "${putters}putters:$connCountP${getters}  getters:$connCountG${nc}"
+      echo -e "${putters}"
+      grep -e "  CONN" /tmp/showConn.$qmName.amqsphac
+      echo -e "${getters}"
+      grep -e "  CONN" /tmp/showConn.$qmName.amqsghac
+      echo -e "${nc}"
+    fi
+    # Wait for the next poll
+    sleep $delay
+  done
+fi
