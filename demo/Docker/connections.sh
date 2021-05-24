@@ -27,8 +27,8 @@
 green='\033[0;32m'
 lgreen='\033[0;92m'
 red='\033[0;31m'
-putters='\033[0;93m'
-getters='\033[0;92m'
+producers='\033[0;93m'
+consumers='\033[0;92m'
 nc='\033[0m'
 
 # The config files are located in the ./QMConfig directory relative to the
@@ -72,10 +72,10 @@ else
     else
       # Display each connection
       echo -e "${green}$1${nc}"
-      echo -e "${putters}putters:$connCountP${getters}  getters:$connCountG${nc}"
-      echo -e "${putters}"
+      echo -e "${producers}producers:$connCountP${consumers}  consumers:$connCountG${nc}"
+      echo -e "${producers}"
       grep -e "  CONN" /tmp/showConn.$qmName.amqsphac
-      echo -e "${getters}"
+      echo -e "${consumers}"
       grep -e "  CONN" /tmp/showConn.$qmName.amqsghac
       echo -e "${nc}"
     fi
