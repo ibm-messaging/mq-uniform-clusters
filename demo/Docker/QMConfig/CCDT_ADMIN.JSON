@@ -1,0 +1,65 @@
+{
+    "channel":
+    [
+        {
+            "name": "DEV.ADMIN.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "localhost",
+                        "port": 1411
+                    }
+                ],
+                "queueManager": "QM1"
+            },
+            "type": "clientConnection"
+        },
+        {
+            "name": "DEV.ADMIN.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "localhost",
+                        "port": 1412
+                    }
+                ],
+                "queueManager": "QM2"
+            },
+            "type": "clientConnection"
+        },
+        {
+            "name": "DEV.ADMIN.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "localhost",
+                        "port": 1413
+                    }
+                ],
+                "queueManager": "QM3"
+            },
+            "type": "clientConnection"
+        },
+        {
+            "name": "DEV.ADMIN.SVRCONN",
+            "clientConnection":
+            {
+                "connection":
+                [
+                    {
+                        "host": "localhost",
+                        "port": 1414
+                    }
+                ],
+                "queueManager": "QM4"
+            },
+            "type": "clientConnection"
+        }
+   ]
+}
