@@ -14,13 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This script starts multiple instances on a sample MQ application.
-# This sample, amqsghac, is provided with the MQ SDK package.
-# It was chosen because it uses the auto-reconnect feature of MQ which
-# means the queue managers will automatically move a connection from
-# this application between queue managers in a Uniform Cluster to
-# achieve an even balance of connections from applications of the same
-# name
+# This script starts multiple instances of a sample MQ application.
+# This sample, mqrequester, is provided in the src folder of this project
+# It demonstrates programmatic configuration of the MQBNO
+# (balancing options) for MQI code implementing the
+# request side of a request-response enterprise application
 
 # The application will connect using the details within the CCDT.JSON
 # file which is found in the same directory as this script (once
