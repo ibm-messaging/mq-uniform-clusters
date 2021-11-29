@@ -19,6 +19,10 @@
 /* (C Header file)                                                    */
 /**********************************************************************/
 
+typedef int BOOL;
+#define TRUE  1
+#define FALSE 0
+
 /* Portable millisecond sleep macro */
 #ifdef WIN32
    #include <windows.h>

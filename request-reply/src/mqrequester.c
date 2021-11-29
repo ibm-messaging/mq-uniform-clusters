@@ -1,5 +1,5 @@
 /*
-* (c) Copyright IBM Corporation 2018
+* (c) Copyright IBM Corporation 2021
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@
 /*       -m  : Queue Manager name                                   */
 /*       -t  : target queue for put                                 */
 /*       -s  : Model queue for get (replies)                        */
-/*       -E  : MQPUT message expiry                                 */
+/*       -e  : MQPUT message expiry                                 */
 /*               N.B. - if not 'unlimited', corresponding GET       */
 /*               with wait will use same timeout.                   */
 /*                                                                  */
@@ -50,17 +50,13 @@
 /********************************************************************/
 /* Structures and constants                                         */
 /********************************************************************/
-typedef int BOOL;
-#define TRUE  1
-#define FALSE 0
 
 /* Global Options */
-BOOL bVerbose;
+BOOL bVerbose;             /* Set this to TRUE for additional debug */
 MQLONG messageExpiry;
 
 /* Helper prototypes */
 void dumpOpts();
-int setBnoTimeout(PMQCHAR optarg);
 
 /********************************************************************/
 /* FUNCTION: main                                                   */
@@ -109,9 +105,7 @@ int main(int argc, PPMQCHAR argv)
                       break;
             case 't': strncpy(trgQ, optarg, MQ_Q_NAME_LENGTH);
                       break;
-            case 'T': bno.Timeout = setBnoTimeout(optarg);
-                      break;
-            case 'E': messageExpiry = atoi(optarg);
+            case 'e': messageExpiry = atoi(optarg);
                       if(messageExpiry == 0) messageExpiry = MQEI_UNLIMITED;
                       break;
             default:
@@ -151,7 +145,7 @@ int main(int argc, PPMQCHAR argv)
    cno.Options |= MQCNO_RECONNECT;
    cno.BalanceParmsPtr = &bno;
    /* We don't modify our app name here so will inherit default     */
-   /* (the name of the built executable, 'requester')               */
+   /* (the name of the built executable, e.g. 'mqrequester')        */
 
    /* Output key structures before connect if requested             */
    if(bVerbose)
@@ -330,24 +324,11 @@ int main(int argc, PPMQCHAR argv)
 
      if(cc == MQCC_FAILED)
         exit(1);
-    }
+   }
 
    exit(0);
- }
-
-
-/* Convert constant names to values for BNO timeout */
-int setBnoTimeout(PMQCHAR optarg)
-{
-   if ( strcmp(optarg,"MQBNO_TIMEOUT_AS_DEFAULT"  ) == 0 )
-      return MQBNO_TIMEOUT_AS_DEFAULT;
-   else if ( strcmp(optarg,"MQBNO_TIMEOUT_IMMEDIATE") == 0 )
-      return MQBNO_TIMEOUT_IMMEDIATE;
-   else if ( strcmp(optarg,"MQBNO_TIMEOUT_NEVER" ) == 0 )
-      return MQBNO_TIMEOUT_NEVER;
-   else
-      return atoi(optarg);
 }
+
 
 
 /* Print additional options supplied to stdout */
