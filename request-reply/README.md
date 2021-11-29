@@ -28,17 +28,17 @@ Both of these applications also register an event handler callback which notes t
 
 For the MQ library dependencies you will need an IBM MQ installation (either client or server) or the redistributable client libraries. If you have installed IBM MQ Advanced for Developers as described above this provides everything you need.
 
-`gcc src/mqrequester.c src/utils.c -I $MQ_INSTALL_PATH/inc -L $MQ_INSTALL_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqrequester`
+`gcc src/mqrequester.c src/utils.c -I $MQ_INSTALLATION_PATH/inc -L $MQ_INSTALLATION_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqrequester`
 
-`gcc src/mqresponder.c src/utils.c -I $MQ_INSTALL_PATH/inc -L $MQ_INSTALL_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqresponder`
+`gcc src/mqresponder.c src/utils.c -I $MQ_INSTALLATION_PATH/inc -L $MQ_INSTALLATION_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqresponder`
 
 ### Compiling the applications - OSX (clang)
 
 With the [MacOS Toolkit](https://developer.ibm.com/tutorials/mq-macos-dev/) and the XCode development environment installed you can build and run the client natively on OSX using clang:
 
-`clang src/mqrequester.c src/utils.c -I $MQ_INSTALL_PATH/inc -L $MQ_INSTALL_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqrequester`
+`clang src/mqrequester.c src/utils.c -I $MQ_INSTALLATION_PATH/inc -L $MQ_INSTALLATION_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqrequester`
 
-`clang src/mqresponder.c src/utils.c -I $MQ_INSTALL_PATH/inc -L $MQ_INSTALL_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqresponder`
+`clang src/mqresponder.c src/utils.c -I $MQ_INSTALLATION_PATH/inc -L $MQ_INSTALLATION_PATH/lib64 -lmqic_r -Wl,-rpath $MQ_INSTALL_PATH/lib64/ -o mqresponder`
 
 ### Compiling the applications - Windows
 
