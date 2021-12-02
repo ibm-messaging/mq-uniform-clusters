@@ -10,6 +10,8 @@ This [video on YouTube](https://www.youtube.com/watch?v=LWELgaEDGs0) takes you t
 
 As well as the Linux demo, a demo using Docker can be found in ['demo/Docker'](demo/Docker)
 
+['request-reply'](request-reply) contains a more advanced variant of the demonstration using the requester-responder application pattern.  It provides sample C applications demonstrating relevant features of the MQ API, and does therefore require a suitable development environment to compile and run these applications.
+
 More information on Uniform Clusters can be found [here](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.1.0/com.ibm.mq.pla.doc/q132720_.htm).
 
 ## License
