@@ -1,0 +1,47 @@
+* © Copyright IBM Corporation 2020, 2021
+*
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+
+* This MQSC configuration is used for all queue managers in the demo uniform cluster
+* Nothing in this configuration is specific to a particular queue manager
+
+* Simplify the demo system by disabling channel and connection authentication
+ALTER QMGR CHLAUTH(DISABLED) CONNAUTH(' ')
+REFRESH SECURITY TYPE(CONNAUTH)
+
+* The only definition required to join a Uniform CLuster when using AutoCluster is to define a cluster receiver channel
+* This will use the cluster name from the AutoCluster ini file setting and the connection name from the crtmqm command
+DEFINE CHANNEL(UNICLUSTER.+QMNAME+) CHLTYPE(CLUSRCVR) CLUSTER(+AUTOCL+) CONNAME(+CONNAME+) SHORTRTY(120) SHORTTMR(5)
+
+* Every queue manager needs to accept client connections
+DEFINE CHANNEL(SVRCONN.CHANNEL) CHLTYPE(SVRCONN)
+
+************************************
+* Application Object Definitions   *
+************************************
+* We define the same topic, queue, and subscription on every queue manager in the uniform cluster.
+* Note that because these definitions are not themselves 'clustered', all publish/subscribe
+* activity is constrained to the local queue manager.  In this example, this ensures that only
+* one subscribing (getter) application receives each publication.
+
+* Define the Topic object on every queue manager in the cluster
+* (this could be ommitted if all publishers and subscribers worked directly with 
+* the Topic string and no additional properties are required for the Topic.)
+DEFINE TOPIC(TESTTOP) TOPICSTR('demo/testtopic')
+
+* Define the target queue for subscriptions
+DEFINE QLOCAL(DESTQ1) DEFPSIST(YES)
+
+* Define the administrative subscription for our sample receiving application
+DEFINE SUB(TESTSUB) TOPICOBJ(TESTTOP) DEST(DESTQ1)
