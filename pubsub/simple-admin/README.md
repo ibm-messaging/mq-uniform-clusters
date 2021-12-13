@@ -10,7 +10,7 @@ In this scenario:
 * Publisher(s) may connect to any queue manager in the cluster
 * Multiple 'discrete' applications can easily be supported on the same topics (each requiring their own administrative subscriptions on each queue manager)
 
-Before starting, consider familiarising yourself with the 'simple' Uniform Cluster demonstration in [demo](../../../demo)
+Before starting, consider familiarising yourself with the 'simple' Uniform Cluster demonstration in [demo](../../demo)
 
 ## The setup
 
@@ -65,11 +65,11 @@ The scenario shown here assumes that for each publication, we only want a single
 
 To add an additional subscribing application we need only:
 
-1. Define the new administrative subscription and destination queue on each queue manager
-e.g.
-  DEFINE QLOCAL(NEWQ) DEFPSIST(YES)
-  DEFINE SUB(NEWSUB) TOPICOBJ(TESTTOP) DEST(NEWQ) 
-
+1. Define the new administrative subscription and destination queue on each queue manager, e.g.
+```
+DEFINE QLOCAL(NEWQ) DEFPSIST(YES)
+DEFINE SUB(NEWSUB) TOPICOBJ(TESTTOP) DEST(NEWQ) 
+```
 This could be done directly using any administrative interface (e.g. runmqsc).  However, you also have the option in this example configuration to update the shared QMConfig/UniCluster.mqsc with the additional definitions, and these will be picked up on restart - why not try this now?  *Remember when ending/restarting a queue manager to use `endmqm -r`* this requests that applications automatically reconnect, so that they see no outage when any given queue manager stops and restarts (at which point application rebalancing will restore an appropriate share of connections to the restarted QM).
 
 2. Ensure that all instances of our applications connect with the same application name (unique to this application)
