@@ -14,10 +14,10 @@ Publish subscribe often creates a different sort of affinity, which the balancin
 
 ### Simple administrative publish subscribe ([simple-admin](simple-admin))
 
-[admin](simple-admin) demonstrates one of the simplest possible publish subscribe patterns.  The Uniform Cluster is used purely to scale a subscribing application horizontally by balancing a pool of instances across several queue managers. This pool must include at least sufficient instances for there always to be one connected to each queue manager in the cluster.  The application must NOT rely on all publications (or all publications from a particular source) being processed by the same subscriber instance.
+[simple-admin](simple-admin) demonstrates one of the simplest possible publish subscribe patterns.  The Uniform Cluster is used purely to scale a subscribing application horizontally by balancing a pool of instances across several queue managers. This pool must include at least sufficient instances for there always to be one connected to each queue manager in the cluster.  The application must NOT rely on all publications (or all publications from a particular source) being processed by the same subscriber instance.
 
 In this scenario:
-* although messages are routed to target queues via MQ Topics, the applications are simple MQ 'Putter's and 'Getter's (in fact the reconnectable samples amqsghac and amqsphac are used). 
+* although messages are routed to target queues via MQ Topics, the receiving applications are simple MQ 'Getter's (in fact the reconnectable sample amqsghac is used). 
 * No queue manager to queue manager message flows are required as messages are always processed at a local instance of the application.
 * Publisher(s) may connect to any queue manager in the cluster
 * Multiple 'discrete' applications can easily be supported on the same topics (each requiring their own administrative subscriptions on each queue manager)

@@ -39,7 +39,7 @@ INSTANCES="${1:-6}"
 
 # parm 2 - subscriber queue name
 # default to DESTQ1 (see QMConfig/UniCluster.mqsc)
-QNAME="${2:=DESTQ1}"
+QNAME="${2:-DESTQ1}"
 
 # parm 3 - application name
 # default to the name of the executable
