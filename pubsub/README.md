@@ -8,7 +8,7 @@ There are many ways of configuring Publish Subscribe in IBM MQ, some of which ar
 
 Publish subscribe often creates a different sort of affinity, which the balancing algorithm cannot currently compensate for.  Therefore only patterns of publish subscribe which do not create such affinities are currently safe.  This project provides examples of the kind of pub sub deployments which *can* benefit from Uniform Clusters today.
 
-(It is also worth noting that if an application does not fit these patterns, it does not mean that it *cannot* be deployed into a Uniform Cluster 'estate'.  If you *know* that the application model is unsuitable for rebalancing, you can still deploy your application against a Uniform Cluster queue manager, but should configure the MQCNO_RECONNECT value to either DISABLED (no automatic reconnection) or QMGR (reconnect only to the same queue manager) - this will prevent applications being automatically moved from queue manager to queue manager to spread load.)
+It is also worth noting that if an application does not fit these patterns, it does not mean that it *cannot* be deployed into a Uniform Cluster 'estate'.  If you *know* that the application model is unsuitable for rebalancing, you can still deploy your application against a Uniform Cluster queue manager, but should configure the MQCNO_RECONNECT value to either DISABLED (no automatic reconnection) or QMGR (reconnect only to the same queue manager) - this will prevent applications being automatically moved from queue manager to queue manager to spread load.
 
 ## The pub sub patterns:
 
