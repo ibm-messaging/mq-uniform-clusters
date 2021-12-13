@@ -70,7 +70,7 @@ e.g.
   DEFINE QLOCAL(NEWQ) DEFPSIST(YES)
   DEFINE SUB(NEWSUB) TOPICOBJ(TESTTOP) DEST(NEWQ) 
 
-This could be done directly using any administrative interface (e.g. runmqsc).  However, you also have the option in this example configuration to update the shared QMConfig/UniCluster.mqsc with the additional definitions, and these will be picked up on restart - why not try this now?  Remember when ending/restarting a queue manager that by using `endmqm -r` you can request that applications automatically reconnect at this point as well, so applications see no outage when a particular queue manager stops and restarts (at which point application rebalancing will restore an appropriate share of connections to the restarted QM).
+This could be done directly using any administrative interface (e.g. runmqsc).  However, you also have the option in this example configuration to update the shared QMConfig/UniCluster.mqsc with the additional definitions, and these will be picked up on restart - why not try this now?  *Remember when ending/restarting a queue manager to use `endmqm -r`* this requests that applications automatically reconnect, so that they see no outage when any given queue manager stops and restarts (at which point application rebalancing will restore an appropriate share of connections to the restarted QM).
 
 2. Ensure that all instances of our applications connect with the same application name (unique to this application)
 
