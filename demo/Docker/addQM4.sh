@@ -1,5 +1,5 @@
 #!/bin/bash
-# © Copyright IBM Corporation 2021
+# © Copyright IBM Corporation 2021, 2022
 #
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ docker run --env LICENSE=accept --env MQ_QMGR_NAME=QM4 \
   --volume $scriptDir/QMConfig/dockerVolume/AutoCluster.ini:/etc/mqm/AutoCluster.ini \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1414:1414 --publish 9444:9443 --network mqnetwork --network-alias QM4 \
-  --detach --name QM4 ibmcom/mq:latest
+  --detach --name QM4 icr.io/ibm-messaging/mq:latest
 
 # Display the containers now running
 echo
