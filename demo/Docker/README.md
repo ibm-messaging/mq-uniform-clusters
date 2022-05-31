@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-The demo scripts and configuration have been produced for Docker using the IBM MQ Advanced for Developers image from https://hub.docker.com/r/ibmcom/mq/.
+The demo scripts and configuration have been produced for Docker using the IBM MQ Advanced for Developers image from the IBM Container Registry.
 
 The bash scripts are written to work on MacOS and Linux
 
