@@ -63,7 +63,7 @@ docker run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1411:1414 --publish 9441:9443 \
   --network mqnetwork --network-alias QM1 \
-  --detach --name QM1 icr.io/ibm-messaging/mq:latest:latest
+  --detach --name QM1 icr.io/ibm-messaging/mq:latest
 
 # Do the same for QM2 (same config files as QM1)
 docker volume create qm2UCdata
@@ -76,7 +76,7 @@ docker run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1412:1414 --publish 9442:9443 \
   --network mqnetwork --network-alias QM2 \
-  --detach --name QM2 icr.io/ibm-messaging/mq:latest:latest
+  --detach --name QM2 icr.io/ibm-messaging/mq:latest
 
 # Do the same for QM3 (same config files as QM1)
 docker volume create qm3UCdata
@@ -89,7 +89,7 @@ docker run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1413:1414 --publish 9443:9443 \
   --network mqnetwork --network-alias QM3 \
-  --detach --name QM3 icr.io/ibm-messaging/mq:latest:latest
+  --detach --name QM3 icr.io/ibm-messaging/mq:latest
 
 # Display the containers now running
 echo
