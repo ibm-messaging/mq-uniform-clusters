@@ -28,8 +28,6 @@ scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 export MQCHLLIB=$scriptDir
 export MQCHLTAB=CCDT.JSON
 
-# The MQ Developer Docker container has a default application user configured, 'app'
-export MQSAMP_USER_ID=app
 
 # Producing MQ demo application
 appName="amqsphac"
