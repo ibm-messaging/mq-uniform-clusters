@@ -1,0 +1,25 @@
+* © Copyright IBM Corporation 2021
+*
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+
+* Open up the CHLAUTH rules for the cluster channels
+SET CHLAUTH('UNICLUSTER.*') TYPE(ADDRESSMAP) USERSRC(CHANNEL) ADDRESS(*) ACTION(REPLACE)
+
+* The only definition required to join a Uniform CLuster when using AutoCluster is to define a cluster receiver channel
+* This will use the cluster name from the AutoCluster ini file setting and the queue manager name as the network address
+* which has been setup in the Docker network alias
+DEFINE CHANNEL(UNICLUSTER.+QMNAME+) CHLTYPE(CLUSRCVR) CLUSTER(+AUTOCL+) CONNAME(+QMNAME+) SHORTTMR(5)
+
+* Messaging resources like queues need to be defined on every member of the uniform cluster
+DEFINE QLOCAL(Q1) CLUSTER(UNICLUSTER) DEFPSIST(YES) DEFBIND(NOTFIXED)

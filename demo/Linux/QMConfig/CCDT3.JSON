@@ -1,71 +1,26 @@
 {
-    "channel": 
-    [
-        {
-            "name": "SVRCONN.CHANNEL",
-            "clientConnection": 
-            {
-                "connection": 
-                [
-                    {
-                        "host": "localhost",
-                        "port": 1401
-                    }
-                ],
-                "queueManager": "ANY_QM"
-            },
-            "connectionManagement":
-            {
-              "clientWeight": 1,
-              "affinity": "none"
-            },
-            "type": "clientConnection"
+    "channel": [{
+        "name": "SVRCONN.CHANNEL",
+        "clientConnection": {
+          "connection": [{
+            "host": "localhost",
+            "port": 1401
+           },{
+            "host": "localhost",
+            "port": 1402
+           },{
+            "host": "localhost",
+            "port": 1403
+            }],
+          "queueManager": "ANY_QM"
+        },
+        "type": "clientConnection"
         },
         {
             "name": "SVRCONN.CHANNEL",
-            "clientConnection": 
+            "clientConnection":
             {
-                "connection": 
-                [
-                    {
-                        "host": "localhost",
-                        "port": 1402
-                    }
-                ],
-                "queueManager": "ANY_QM"
-            },
-            "connectionManagement":
-            {
-              "clientWeight": 1,
-              "affinity": "none"
-            },
-            "type": "clientConnection"
-        },
-        {
-            "name": "SVRCONN.CHANNEL",
-            "clientConnection": 
-            {
-                "connection": 
-                [
-                    {
-                        "host": "localhost",
-                        "port": 1403
-                    }
-                ],
-                "queueManager": "ANY_QM"
-            },
-            "connectionManagement":
-            {
-              "clientWeight": 1,
-              "affinity": "none"
-            },
-            "type": "clientConnection"
-        },
-        {
-            "name": "SVRCONN.CHANNEL",
-            "clientConnection": 
-            {
-                "connection": 
+                "connection":
                 [
                     {
                         "host": "localhost",
@@ -78,9 +33,9 @@
         },
         {
             "name": "SVRCONN.CHANNEL",
-            "clientConnection": 
+            "clientConnection":
             {
-                "connection": 
+                "connection":
                 [
                     {
                         "host": "localhost",
@@ -93,9 +48,9 @@
         },
         {
             "name": "SVRCONN.CHANNEL",
-            "clientConnection": 
+            "clientConnection":
             {
-                "connection": 
+                "connection":
                 [
                     {
                         "host": "localhost",
