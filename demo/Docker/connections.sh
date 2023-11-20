@@ -61,10 +61,11 @@ else
     running=`grep -e "AMQ9202E" /tmp/showConn.$qmName.amqsphac | wc -l`
 
     # Count up each application
-    connCountP=`grep -e "  CONN" /tmp/showConn.$qmName.amqsphac | wc -w`
-    connCountG=`grep -e "  CONN" /tmp/showConn.$qmName.amqsghac | wc -w`
-    connCountP=`grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsphac | sort | uniq | wc -w`
-    connCountG=`grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsghac | sort | uniq | wc -w`
+    connCountP=`grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsphac | sort | uniq | wc -l`
+    connCountG=`grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsghac | sort | uniq | wc -l`
+
+    connP=$(grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsphac | sort -u)
+    connG=$(grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsghac | sort -u)
 
 
     # Just refresh what's in the terminal on each poll
@@ -77,9 +78,9 @@ else
       echo -e "${green}$1${nc}"
       echo -e "${producers}producers:$connCountP${consumers}  consumers:$connCountG${nc}"
       echo -e "${producers}"
-      grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsphac | sort
+      grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsphac | sort -u
       echo -e "${consumers}"
-      grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsghac | sort
+      grep -e "  CONNTAG" /tmp/showConn.$qmName.amqsghac | sort -u
       echo -e "${nc}"
     fi
     # Wait for the next poll
