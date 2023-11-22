@@ -58,6 +58,7 @@ $CMDDOCKER network create mqnetwork
 # Each queue maanger requires a volume for the persistent queue manager data
 # Start with QM1
 $CMDDOCKER volume create qm1UCdata
+sleep 5
 
 # The icr.io/ibm-messaging/mq:latest Docker container image automatically applies MQ configuration files that
 # are mounted into the /etc/mqm directory. We mount configuration files that setup the 
@@ -76,7 +77,7 @@ $CMDDOCKER run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1411:1414 --publish 9441:9443 \
   --network mqnetwork --network-alias QM1 \
-  --detach --name QM1 icr.io/ibm-messaging/mq:latest
+  --detach --name QM1 localhost/ibm-mqadvanced-server-dev:9.3.3.0-arm64
 
 # Do the same for QM2 (same config files as QM1)
 $CMDDOCKER volume create qm2UCdata
@@ -89,7 +90,7 @@ $CMDDOCKER run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1412:1414 --publish 9442:9443 \
   --network mqnetwork --network-alias QM2 \
-  --detach --name QM2 icr.io/ibm-messaging/mq:latest
+  --detach --name QM2 localhost/ibm-mqadvanced-server-dev:9.3.3.0-arm64
 
 # Do the same for QM3 (same config files as QM1)
 $CMDDOCKER volume create qm3UCdata
@@ -102,7 +103,7 @@ $CMDDOCKER run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1413:1414 --publish 9443:9443 \
   --network mqnetwork --network-alias QM3 \
-  --detach --name QM3 icr.io/ibm-messaging/mq:latest
+  --detach --name QM3 localhost/ibm-mqadvanced-server-dev:9.3.3.0-arm64
 
 # Display the containers now running
 echo

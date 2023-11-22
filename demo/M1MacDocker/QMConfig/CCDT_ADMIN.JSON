@@ -1,81 +1,63 @@
 {
-    "channel": [{
-        "name": "SVRCONN.CHANNEL",
-        "clientConnection": {
-          "connection": [{
-            "host": "localhost",
-            "port": 1401
-           },{
-            "host": "localhost",
-            "port": 1402
-           },{
-            "host": "localhost",
-            "port": 1403
-            },{
-            "host": "localhost",
-            "port": 1404
-            }],
-          "queueManager": "ANY_QM"
-        },
-        "type": "clientConnection"
-        },
+    "channel":
+    [
         {
-            "name": "SVRCONN.CHANNEL",
+            "name": "DEV.ADMIN.SVRCONN",
             "clientConnection":
             {
                 "connection":
                 [
                     {
                         "host": "localhost",
-                        "port": 1401
+                        "port": 1411
                     }
                 ],
-                "queueManager": "QMGR1"
+                "queueManager": "QM1"
             },
             "type": "clientConnection"
         },
         {
-            "name": "SVRCONN.CHANNEL",
+            "name": "DEV.ADMIN.SVRCONN",
             "clientConnection":
             {
                 "connection":
                 [
                     {
                         "host": "localhost",
-                        "port": 1402
+                        "port": 1412
                     }
                 ],
-                "queueManager": "QMGR2"
+                "queueManager": "QM2"
             },
             "type": "clientConnection"
         },
         {
-            "name": "SVRCONN.CHANNEL",
+            "name": "DEV.ADMIN.SVRCONN",
             "clientConnection":
             {
                 "connection":
                 [
                     {
                         "host": "localhost",
-                        "port": 1403
+                        "port": 1413
                     }
                 ],
-                "queueManager": "QMGR3"
+                "queueManager": "QM3"
             },
             "type": "clientConnection"
         },
         {
-            "name": "SVRCONN.CHANNEL",
-            "clientConnection": 
+            "name": "DEV.ADMIN.SVRCONN",
+            "clientConnection":
             {
-                "connection": 
+                "connection":
                 [
                     {
                         "host": "localhost",
-                        "port": 1404
+                        "port": 1414
                     }
                 ],
-                "queueManager": "QMGR4"
+                "queueManager": "QM4"
             },
             "type": "clientConnection"
         }
