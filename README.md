@@ -8,7 +8,7 @@ Uniform clusters are a specific pattern of an IBM MQ cluster that provides a hig
 
 This [video on YouTube](https://www.youtube.com/watch?v=LWELgaEDGs0) takes you through a very simple demo of a Uniform Cluster containing three queue managers. Many of the scripts and configuration to run this demo can be found in ['demo/Linux'](demo/Linux).
 
-As well as the Linux demo, a demo using Docker can be found in ['demo/Docker'](demo/Docker)
+As well as the Linux demo, a demo using Docker can be found in ['demo/Docker'](demo/Docker), or for M1 Macs, in ['demo/M1MacDocker'](demo/M1MacDocker)
 
 ['request-reply'](request-reply) contains a more advanced variant of the demonstration using the requester-responder application pattern.  It provides sample C applications demonstrating relevant features of the MQ API, and does therefore require a suitable development environment to compile and run these applications.
 
