@@ -50,7 +50,8 @@ $CMDDOCKER run --env LICENSE=accept --env MQ_QMGR_NAME=QM4 \
   --volume $scriptDir/QMConfig/dockerVolume/AutoCluster.ini:/etc/mqm/AutoCluster.ini \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1414:1414 --publish 9444:9443 --network mqnetwork --network-alias QM4 \
-    --detach --name QM4 localhost/ibm-mqadvanced-server-dev:9.3.3.0-arm64
+  --env MQ_APP_USER=app --env MQ_APP_PASSWORD=passw0rd --env MQ_ADMIN_USER=admin --env MQ_ADMIN_PASSWORD=passw0rd \
+  --detach --name QM4 localhost/ibm-mqadvanced-server-dev:9.4.0.0-arm64
 
 # Display the containers now running
 echo

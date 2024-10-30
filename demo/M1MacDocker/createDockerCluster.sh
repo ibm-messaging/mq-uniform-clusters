@@ -77,7 +77,8 @@ $CMDDOCKER run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1411:1414 --publish 9441:9443 \
   --network mqnetwork --network-alias QM1 \
-  --detach --name QM1 localhost/ibm-mqadvanced-server-dev:9.3.3.0-arm64
+  --env MQ_APP_USER=app --env MQ_APP_PASSWORD=passw0rd --env MQ_ADMIN_USER=admin --env MQ_ADMIN_PASSWORD=passw0rd \
+  --detach --name QM1 localhost/ibm-mqadvanced-server-dev:9.4.0.0-arm64
 
 # Do the same for QM2 (same config files as QM1)
 $CMDDOCKER volume create qm2UCdata
@@ -90,7 +91,8 @@ $CMDDOCKER run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1412:1414 --publish 9442:9443 \
   --network mqnetwork --network-alias QM2 \
-  --detach --name QM2 localhost/ibm-mqadvanced-server-dev:9.3.3.0-arm64
+  --env MQ_APP_USER=app --env MQ_APP_PASSWORD=passw0rd --env MQ_ADMIN_USER=admin --env MQ_ADMIN_PASSWORD=passw0rd \
+  --detach --name QM2 localhost/ibm-mqadvanced-server-dev:9.4.0.0-arm64
 
 # Do the same for QM3 (same config files as QM1)
 $CMDDOCKER volume create qm3UCdata
@@ -103,7 +105,8 @@ $CMDDOCKER run \
   --volume $scriptDir/QMConfig/dockerVolume/UniCluster.mqsc:/etc/mqm/UniCluster.mqsc \
   --publish 1413:1414 --publish 9443:9443 \
   --network mqnetwork --network-alias QM3 \
-  --detach --name QM3 localhost/ibm-mqadvanced-server-dev:9.3.3.0-arm64
+  --env MQ_APP_USER=app --env MQ_APP_PASSWORD=passw0rd --env MQ_ADMIN_USER=admin --env MQ_ADMIN_PASSWORD=passw0rd \
+  --detach --name QM3 localhost/ibm-mqadvanced-server-dev:9.4.0.0-arm64
 
 # Display the containers now running
 echo
