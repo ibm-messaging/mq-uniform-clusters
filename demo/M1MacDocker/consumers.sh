@@ -34,6 +34,10 @@ appName="amqsghac"
 appCount=${1:-12}             # Number of application instances
 queueName=${2:-"DEV.QUEUE.1"} # Queue to consume from
 qmgrName=${3:-"*ANY_QM"}      # Queue manager group to connect to
+appUsedId=${4:-"app"}          # We create the queue managers with an application userid of "app"
+password=${5:-"passw0rd"}        # and password of "passw0rd"
+
+export MQSAMP_USER_ID=$appUsedId
 
 # Set the output to the same colour used by connections.sh
 echo -e '\033[0;92m'
@@ -41,5 +45,5 @@ echo -e '\033[0;92m'
 # Start multiple consuming application instances
 for (( i=0; i<$appCount; ++i)); do
   echo "Starting $appName"
-  $appName $queueName $qmgrName &
+    echo "$password" | $appName $queueName $qmgrName &
 done

@@ -28,13 +28,16 @@ scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 export MQCHLLIB=$scriptDir
 export MQCHLTAB=CCDT.JSON
 
-
 # Producing MQ demo application
 appName="amqsphac"
 
 appCount=${1:-12}          # Number of application instances
 queueName=${2:-"DEV.QUEUE.1"}   # Queue to produce to
 qmgrName=${3:-"*ANY_QM"}       # Queue manager group to connect to
+appUsedId=${4:-"app"}          # We create the queue managers with an application userid of "app"
+password=${5:-"passw0rd"}        # and password of "passw0rd"
+
+export MQSAMP_USER_ID=$appUsedId
 
 # Set the output to the same colour used by connections.sh
 echo -e '\033[0;93m'
@@ -42,7 +45,7 @@ echo -e '\033[0;93m'
 # Start multiple application instances
 for (( i=0; i<$appCount; ++i)); do
   echo "Starting $appName"
-  $appName $queueName $qmgrName &
+  echo "$password" | $appName $queueName $qmgrName &
   # Stagger the applications slightly, just so their output is smoother for the screen
   sleep 0.2
 done
